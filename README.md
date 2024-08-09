@@ -3,9 +3,9 @@ Project to log glider aerobatic flights for later replay and analysis, with a vi
 
 The logger we intend to use is provided by Gulf Coast Data Concepts. The project is sponsored by British Aerobatics. 
 
-https://www.gulfcoastdataconcepts.com/IMU-GPS.html
+   https://www.gulfcoastdataconcepts.com/IMU-GPS.html
 
-https://www.aerobatics.org.uk
+   https://www.aerobatics.org.uk
 
 The logger is configured using a simple text file called config.txt located on the microSD card.
 
@@ -46,8 +46,10 @@ Data is stored to simple text formatted .csv type files, which are easily import
         1685570953.890152,18,-12,1016,-735,-2494,-193
         1685570953.899444,18,-11,1015,-621,-2564,-219
 
-        The bulk of the work will be processing the logged data through to flight simulator play-back files, say Condor 2 file format, and also GPS position and aircraft attitude v UTC time files for flight analysis against the CIVA competition judging rules. This is the major piece of work that no one has tackled - yet. There is a paper  on a unit trialed during a Red Bull Air Race that used Kalman Filtering with 43 degrees of freedom, so it is not simple!
 
-        https://www.imar-navigation.de/downloads/papers/REP_iMAR_Paper_TrainingAircraft_2016-RedBull.pdf
+
+The bulk of the work will be processing the logged data through to flight simulator play-back files, say Condor 2 file format, and also GPS position and aircraft attitude v UTC time files for flight analysis against the CIVA competition judging rules. This is the major piece of work that no one has tackled - yet. There is a paper  on a unit trialed during a Red Bull Air Race that used Kalman Filtering with 43 degrees of freedom, so it is not simple!
+
+   https://www.imar-navigation.de/downloads/papers/REP_iMAR_Paper_TrainingAircraft_2016-RedBull.pdf
 
         
