@@ -1,0 +1,102 @@
+; PRODUCT_ID = IMU-GPS+alt 
+; sensor data priority
+; accel->gyro->mag->pressTemp->gps
+; sample rates must be in descending order
+; load into spreadsheet as comma separated but
+; do not merge delimitors 
+
+: ACCEL GYRO PARAMETERS
+; available sample rates are 12, 26, 52, 104, 208, and 416
+; sample rate affects both accel and gyro
+ag_sampleRate = 208
+; available HPF filter rate are 0, 16, 65, 260, 1000 milliHz
+ag_gyroHpf = 65
+; available full scale ranges are 125 250, 500, 1000 and 2000 degrees per sec (dps)
+ag_gyroFullScale = 250
+; available full scale ranges are 2, 4, 8 and 16 g
+ag_accelFullScale = 8
+
+; MAGNETOMETER PARAMETERS
+; availble sample rates are 1, 10, 20 50, 100 and 200 Hz, YES
+mag_SampleRate= 20
+
+; PRESSURE SENSOR PARAMETERS
+;add pressure to data stream
+press_pressOn
+; the pressure interval is the pressure transucer measurement interval, in milliseconds
+press_sampleInterval=10
+;add temperature to data stream
+press_tempOn
+press_tempSubSample=0
+; the trigger is measured in meters above turn-on location
+;press_triggerHeight = 10	
+
+; GPS PARAMETERS
+gpsOn = 1
+; minimum hdop required, in meters
+;gps_MinLock = 40
+
+;gps_update interval, in seconds
+gps_sampleinterval = 0.1
+
+; discipline RTC with GPS time 
+; expressed in seconds, RevNew user manual is incorrect
+gps_clockThreshold = 0.100
+
+; dynamic models 0-->potable 2-->stationary 3-->pedestran 4--> automotive, 5-->sea, 6,7,8-->airborn
+gps_dynamicModel = 7
+;gps_gnssGlonass = 0x01010001  ; enable
+; disable Glonass
+;gps_gnssGlonass = 0x01010000
+
+; minlock minimum HDOP in meters considered to be acceptable lock
+gps_minlock = 40
+; discard gps readings that exceed the minimum HDOP
+;gps_nobad
+
+; used in on/off mode number of good samples to collect before turning off
+;gps_numSamples = 1
+; used in on/off mode, time in seconds device will spend trying to collect good samples
+;gps_powerOnTime = 50.0
+; used in on/off mode, time, in seconds bewteen on events
+;gps_powerPeriod = 300.0
+
+; extra parameters to logger operation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; FILE PARAMETERS
+;set file size to 30 minutes of data
+samplesperfile = 180000
+; custom directory name
+;dirname = /DATA
+; custom file prefix
+;filename = areo
+
+; EVENT DETECTOR PARAMETERS
+deadband = 0
+DeadBandTimeout = 5
+dwell=100
+
+; set timestamp to UTC seconds since Jan 1, 1970 instead of time since start of file
+absoluteTime
+
+;control brightness of LEDs, values are 'off' or 'high'
+statusindicators = high
+
+;uncomment following line to activate logger upon disconnect from USB
+;rebootOnDisconnect
+
+; wakeupTime uses crontab format, except that six fields are required
+; an there is a second in the minuite field (the 6th field
+; rtc alarm to wake up system
+; wakeupTime = 0 5,35 * * * * ; wakes up system at 5 and 35 minute after the hour
+; wakeupTime = 0 0,15,30,45 * * * * ; wakes up system 
+;wakeupTime = 0 * * * * * ;wakes up system every minute
+; wakeupTime = 0 0 2,8 0 0 0 ;wakes up system at 2 and 8 AM
+;wakeupTime = 0, */2 * * * *
+; default secsToRecord is 0 , (off)
+;secsToRecord = 60
+; logical, default is to remain turned on
+;offOnEndRecord
+;fileappend
+
